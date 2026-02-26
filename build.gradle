@@ -23,8 +23,15 @@ minecraft {
     replace "@VERSION@", project.version
 }
 
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
+    }
+}
+
 dependencies {
-	compile fileTree(dir: 'libs', include: ['*.jar'])
+    // HBM's Nuclear Tech Mod - Project ID: 235439, File ID: 6900489
+    deobfCompile "curse.maven:hbms-nuclear-tech-mod-235439:6900489"
 }
 
 processResources
