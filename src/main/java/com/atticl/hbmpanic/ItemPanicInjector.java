@@ -1,5 +1,6 @@
 package com.atticl.hbmpanic;
 
+import com.hbm.extprop.HbmLivingProps;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -21,12 +22,7 @@ public class ItemPanicInjector extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		if (!world.isRemote) {
-			net.minecraft.nbt.NBTTagCompound nbt = player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
-			if (nbt != null) {
-			    float currentRads = nbt.getFloat("rad");
-			    float newRads = Math.max(0, currentRads - 250.0F);
-			    nbt.setFloat("rad", newRads);
-			}
+			HbmLivingProps.incrementRadiation(player, -250.0F);
 		    
 			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 1));
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 2));
