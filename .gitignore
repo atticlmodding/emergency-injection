@@ -1,0 +1,31 @@
+# Gradle
+.gradle/
+build/
+gradle.properties
+libs/
+
+# Eclipse
+.metadata/
+.settings/
+.classpath
+.project
+bin/
+eclipse/
+
+# Idea
+.idea/
+*.iml
+*.iws
+out/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Forge specific
+run/
+usercache.json
+usernamecache.json

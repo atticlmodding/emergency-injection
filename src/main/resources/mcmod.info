@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hbmpanic",
+  "name": "HBM Panic Injector Mod",
+  "description": "Panic Injector mod to get rid of your radiation.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["atticl"],
+  "credits": "The Forge and FML guys & atticl for writing the mod",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
