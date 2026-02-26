@@ -2,6 +2,7 @@
 .gradle/
 build/
 gradle.properties
+libs/
 
 # Eclipse
 .metadata/
