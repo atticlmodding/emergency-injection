@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    compile deobf("curse.maven:hbms-nuclear-tech-mod-235439:6900489")
+    compile "curse.maven:hbms-nuclear-tech-mod-235439:6900489"
 }
 
 processResources
