@@ -1,5 +1,8 @@
 package com.atticl.hbmpanic;
 
+import com.hbm.extprop.HbmLivingProps;
+import com.hbm.items.ModItems;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -31,20 +34,13 @@ public class ItemSpentSyringe extends Item {
 
             // 1. Water Check (Always first)
             if (player.isInsideOfMaterial(net.minecraft.block.material.Material.water)) {
-                Item cleanSyringe = (Item) Item.itemRegistry.getObject("hbm:item.syringe_empty");
-                player.inventory.setInventorySlotContents(slot, new ItemStack(cleanSyringe));
+                player.inventory.setInventorySlotContents(slot, new ItemStack(ModItems.syringe_empty));
                 world.playSoundAtEntity(player, "random.fizz", 0.7F, 1.5F);
                 return;
             }
 
             if (world.getTotalWorldTime() % 20 == 0) {
-            	net.minecraft.nbt.NBTTagCompound nbt = player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
-            	if (nbt != null) {
-            	    float currentRads = nbt.getFloat("rad");
-            	    nbt.setFloat("rad", currentRads + 0.5F);
-            	}
-                
-                world.playSoundAtEntity(player, "random.click", 0.4F, 2.0F);
+            	HbmLivingProps.incrementRadiation(player, 0.5F);
             }
         }
     }
@@ -53,9 +49,7 @@ public class ItemSpentSyringe extends Item {
     public boolean onEntityItemUpdate(EntityItem entityItem) {
         World world = entityItem.worldObj;
         if (!world.isRemote && entityItem.isInsideOfMaterial(Material.water)) {
-            Item cleanSyringe = (Item) Item.itemRegistry.getObject("hbm:item.syringe_empty");
-            
-            EntityItem newEntity = new EntityItem(world, entityItem.posX, entityItem.posY, entityItem.posZ, new ItemStack(cleanSyringe));
+            EntityItem newEntity = new EntityItem(world, entityItem.posX, entityItem.posY, entityItem.posZ, new ItemStack(ModItems.syringe_empty));
             world.spawnEntityInWorld(newEntity);
             
             world.playSoundEffect(entityItem.posX, entityItem.posY, entityItem.posZ, "random.fizz", 0.7F, 1.5F);

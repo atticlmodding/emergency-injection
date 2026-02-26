@@ -12,17 +12,25 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
+version = project.hasProperty('modVersion') ? project.modVersion : "1.0.0"
 group= "com.atticl.hbmpanic"
 archivesBaseName = "hbmpanic"
 
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "eclipse"
+    
+    replace "@VERSION@", project.version
+}
+
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
-	compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "curse.maven:hbms-nuclear-tech-mod-235439:6900489"
 }
 
 processResources
